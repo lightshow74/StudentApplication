@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block content %}
+
+      <img src="/static/images/StudentLed.png" class="reportchart">
+
+      <table id="students">
+        <tr>
+          <th>Student</th>
+          <th>Standard</th>
+          <th>Assessed</th>
+        </tr>
+
+	{% for result in assessment %}
+        <tr>
+          <td>{{ result.student }}</td>
+          <td>{{ result.standard }}</td>
+          <td>{{ result.assessed }}</td>
+        </tr>
+	{% endfor %}
+
+      </table>
+{% endblock %}

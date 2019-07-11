@@ -85,3 +85,6 @@ tr:nth-child(even) {
   background-color: #eee;
 }
 
+.reportchart {
+  width: 300px;
+}
