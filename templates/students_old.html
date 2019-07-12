@@ -5,8 +5,6 @@
         <tr>
           <th>Student ID</th>
           <th>Student Name</th>
-          <th>Standard</th>
-          <th>Assessed Level</th>
           <th></th>
         </tr>
 
@@ -14,8 +12,6 @@
         <tr>
           <td>{{ student.studentID }}</td>
           <td>{{ student.studentName }}</td>
-          <td>{{ student.standardID }}</td>
-          <td>{{ student.assessedLevel }}</td>
           <td><a href="students/{{ student.studentID }}">Report</a></td>
         </tr>
 	{% endfor %}
