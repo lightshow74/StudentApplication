@@ -103,6 +103,49 @@ tr:nth-child(even) {
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
+#standards {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+
+#standards .standard {
+  position: relative;
+  margin: 0.1em;
+  padding: 0.3em;
+  background-color: #007dff;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  color: #fff;
+  font-weight: bold;
+  cursor: help;
+}
+
+.details {
+  display: none;
+  position: absolute;
+  top: -0.2em;
+  left: 100%;
+  margin: 0 0 0 0.3em;
+  padding: 0.3em;
+  list-style: none;
+  background-color: #007dff;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  min-width: 200px;
+}
+
+.standard:hover .details {
+  display: block;
+  z-index: 10;
+}
+
 #student {
   position: absolute;
   top: 50%;
@@ -118,6 +161,7 @@ tr:nth-child(even) {
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   z-index:10;
 }
+
 
 #student p {
   margin: 0;
@@ -138,7 +182,6 @@ tr:nth-child(even) {
   width: 230px;
   height: 230px;
   z-index: 3;
-  background-color: #fff;
 }
 
 #skils g {

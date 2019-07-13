@@ -46,7 +46,11 @@ def students():
 def student_edit(id): # Function definition contains a parameter for ID
   single="TRUE"
 ## Database Query where ID is selected from a link in the GUI
-  query = query_db("SELECT Students.StudentID, Students.StudentName, StandardID, AssessedLevel from Assessment join Students using (StudentID) WHERE Students.StudentID={0} ".format(id), single)
+  query = query_db("SELECT Students.StudentID, Students.StudentName, StandardID, Standards.StandardTitle, AssessedLevel from Assessment join Students using (StudentID) join Standards using (StandardID) WHERE Students.StudentID={0} ".format(id), single)
+
+  standards_query = query_db("SELECT StandardID, Standards.StandardTitle, AssessedLevel from Assessment join Students using (StudentID) join Standards using (StandardID) WHERE Students.StudentID={0} ".format(id))
+
+  standards= [dict(StandardID=row[0], StandardTitle=row[1], AssessedLevel=row[2]) for row in standards_query]
 
 ## Page Not Found 
   if not query:
@@ -55,6 +59,7 @@ def student_edit(id): # Function definition contains a parameter for ID
   return render_template('report.html',
                           title="Student Report",
                           student=query,
+                          standards=standards,
                           id=id)
 
 

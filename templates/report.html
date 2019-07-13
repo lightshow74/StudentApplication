@@ -3,18 +3,46 @@
       <article>
 			<h2>This is a report for: {{ student[1] }}</h2>
       <img src="/static/images/StudentLed.png" class="reportchart">
-				<section>
-          <div id="project">
+      
+      <section id="standards">
+        {% for standard in standards %}
+          <div class="standard">
+            {{ standard.AssessedLevel }}
+            <ul class="details">
+               <li>{{ standard.StandardID }}: {{ standard.StandardTitle }}</li>
+            </ul>
+          </div>
+	      {% endfor %}
+      </section>
+
+
+				<section id="project">
             <div id="student" title="{{ student[1] }}">
               <p>{{ student[1] }}</p>
             </div>
 
-         <!--   <div class="skill" id="skill1"></div>
+        <div id="skills">
+          <svg class="wedge">
+
+            <g id="wedge3">
+              <path d="M115,115 L115,5 A110,110 1 0,1 220,120 z" fill="#007dff""></path>
+            </g>
+
+<!--
+            <g id="wedge1">
+              <path d="M115,115 L115,15 A110,110 1 0,1 190,35 z" fill="#007dff""></path>
+            </g>
 
 
+            <g id="wedge2">            
+              <path d="M125,125 L125,5 A120,120 1 0,1 190,35 z" fill="#bb7dff"></path>
+            </g>
+-->
 
+          </svg>
 
-            <div id="cone"></div>-->
+        </div>
+        
 
 <!-- 
 From: https://stackoverflow.com/questions/21205652/how-to-draw-a-circle-sector-in-css
@@ -34,24 +62,9 @@ y = 115 + 110 * sin(45)
 
 205.676,177.272
 
--->
-        <div id="skills">
-          <svg class="wedge">
-            <g id="wedge1">
-              <path d="M115,115 L115,5 A110,110 1 0,1 190,35 z" fill="#007dff" transform="rotate(-30)"></path>
-            </g>
 
-<!--
-            <g id="wedge2">            
-              <circle cx="115" cy="115" r="110" fill="transparent"></circle>
-              <path d="M115,115 L115,5 A110,110 1 0,1 190,35 z" fill="#ffcc00"></path>
-            </g>
 
 -->
-          </svg>
-
-        </div>
-
           </div>
 
 
