@@ -7,6 +7,7 @@
 				<section id="project">
             <div id="student" title="{{ student[1] }}">
               <p>{{ student[1] }}</p>
+          
             </div>
             
             <div id="project_assessment">
@@ -16,13 +17,30 @@
             </div>
 
             <div id="project_skills">
+            {% set angle = -40 %}
               {% for skill in skills %}
-                <div class="project_skill" id="skill_{{loop.index}}" title="{{ skill.SkillTitle }}">{{ skill.SkillWorkshop }}</div>
+                <div class="project_skill" id="skill_{{loop.index}}" title="{{ skill.SkillTitle }}" style="transform: rotate({{ angle }}deg)">{{ skill.SkillWorkshop }}{{ angle}}
+                  <div class="skill-details">Some story here</div>
+                </div>
+                {% set angle = angle+20 %}
+                
 	            {% endfor %}
             </div>
 				</section>
 
         <section id="details">
+
+          <h3>Projects</h3>
+          <table>
+          {% for project in projects %}
+          <tr>
+            <td>{{ project.ProjectTitle }}</td>
+          </tr>
+	      {% endfor %}
+        </table>
+
+
+
           <h3>Standards</h3>
           <table>
           {% for standard in standards %}
@@ -43,6 +61,8 @@
           </tr>
 	      {% endfor %}
         </table>
+
+        <h3>Wellbeing</h3>
       </section>
 
 			</article>

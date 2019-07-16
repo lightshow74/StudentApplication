@@ -56,6 +56,10 @@ def student_edit(id): # Function definition contains a parameter for ID
 
   skills= [dict(SkillSetID=row[0], SkillTitle=row[1], SkillWorkshop=row[2]) for row in skills_query]
 
+  projects_query = query_db("SELECT ProjectTitle from Project join Students using (StudentID) WHERE Students.StudentID={0} ".format(id))
+
+  projects= [dict(ProjectTitle=row[0]) for row in projects_query]
+
 ## Page Not Found 
   if not query:
     abort(404)
@@ -65,6 +69,7 @@ def student_edit(id): # Function definition contains a parameter for ID
                           student=query,
                           standards=standards,
                           skills=skills,
+                          projects=projects,
                           id=id)
 
 
