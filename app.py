@@ -11,6 +11,10 @@ from flask_sqlalchemy import SQLAlchemy
 # Creates a Flask object called 'app' that we can use throughout the programme
 app = Flask(__name__)
 
+class wellbeing(Form):
+    first_name = StringField(u'First Name', validators=[validators.input_required()])
+    last_name  = StringField(u'Last Name', validators=[validators.optional()])
+
 # DB Connection
 def query_db(query, single=False):
     db = sqlite3.connect('db/report.db')
@@ -43,7 +47,7 @@ def students():
 
 # Function that displays the individual report for a student
 @app.route("/students/<int:id>")
-def student_edit(id): # Function definition contains a parameter for ID
+def student(id): # Function definition contains a parameter for ID
   single="TRUE"
 ## Database Query where ID is selected from a link in the GUI
   query = query_db("SELECT Students.StudentID, Students.StudentName, StandardID, Standards.StandardTitle, AssessedLevel from Assessment join Students using (StudentID) join Standards using (StandardID) WHERE Students.StudentID={0} ".format(id), single)
@@ -73,6 +77,15 @@ def student_edit(id): # Function definition contains a parameter for ID
                           id=id)
 
 
+@app.route("/students/<int:id>/edit")
+def student_edit(id):
+  single="TRUE"
+  form = wellbeing()
+
+  return render_template('wellbeing_edit.html',
+                          title="Student Wellbeing",
+                          form=form,
+                          id=id)
 
 # This function deals with any missing pages and shows the Error page
 @app.errorhandler(404)

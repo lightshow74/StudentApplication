@@ -150,7 +150,7 @@ article#report table {
   top: 50%;
   left: 50%;
   transform: translate(0, -50%);
-  z-index:12;
+  z-index:8;
 }
 
 .project_skill {
@@ -169,6 +169,22 @@ article#report table {
   border-style: solid;
   border-radius: 1em;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.project_skill .no {
+  display: inline-block;
+  background-color: #ff0000;
+  color: #ff0000;
+  width: 1em;
+  border-radius: 1em;
+}
+
+.project_skill .yes {
+  display: inline-block;
+  background-color: #00da04;
+  color: #00da04;
+  width: 1em;
+  border-radius: 1em;
 }
 
 
@@ -194,10 +210,12 @@ article#report table {
 }
 
 .project_standard {
+  position: absolute;
+  right: 50%;
   margin: 2px 0;
   padding: 0.5em 1em;
   width: 110px;
-  transform-origin: 100% 50%;
+  transform-origin: 100% 0%;
   background-image: linear-gradient(-90deg, #ff8e7e, #841a00);
   text-align: left;
   font-size: 11px;

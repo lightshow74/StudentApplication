@@ -1,8 +1,6 @@
 {% extends "index.html" %}
 {% block content %}
       <article id="report">
-      <!--<img src="/static/images/StudentLed.png" class="reportchart">-->
-
 
 				<section id="project">
             <div id="student" title="{{ student[1] }}">
@@ -11,18 +9,22 @@
             </div>
             
             <div id="project_assessment">
+            {% set angle = [30] %}
               {% for standard in standards %}
-                <div class="project_standard" id="assessment_{{loop.index}}" title="{{ standard.StandardTitle }}">{{ standard.StandardID }} ({{ standard.AssessedLevel }})</div>
+                <div class="project_standard" id="assessment_{{loop.index}}" title="{{ standard.StandardTitle }}" style="transform: rotate({{ angle[0] }}deg)">{{ standard.StandardID }} ({{ standard.AssessedLevel }})</div>
+                {% if angle.append(angle.pop() - 15) %}{% endif %}
 	            {% endfor %}
             </div>
 
             <div id="project_skills">
-            {% set angle = -40 %}
+            {% set angle = [-30] %}
               {% for skill in skills %}
-                <div class="project_skill" id="skill_{{loop.index}}" title="{{ skill.SkillTitle }}" style="transform: rotate({{ angle }}deg)">{{ skill.SkillWorkshop }}{{ angle}}
-                  <div class="skill-details">Some story here</div>
+                <div class="project_skill" id="skill_{{loop.index}}" title="{{ skill.SkillTitle }}" style="transform: rotate({{ angle[0] }}deg)">  
+                  {% if skill.SkillWorkshop == 0 %}<span class="no">0</span>{% endif %}
+                  {% if skill.SkillWorkshop == 1 %}<span class="yes">1</span>{% endif %}
                 </div>
-                {% set angle = angle+20 %}
+                {% if angle.append(angle.pop() + 15) %}{% endif %}
+        
                 
 	            {% endfor %}
             </div>
